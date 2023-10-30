@@ -8,6 +8,11 @@ public class BankAccount {
         this.balance = 0;
         this.userId = generateId();
     }
+    public BankAccount(String username, int balance, String userId){
+        this.username = username;
+        this.balance = balance;
+        this.userId = userId;
+    }
 
     @Override
     public String toString() {
@@ -27,6 +32,10 @@ public class BankAccount {
         }
 
         return randomId.toString();
+    }
+
+    void setUsername(String newName){
+        this.username = newName;
     }
 
     void withdraw(double amount){
