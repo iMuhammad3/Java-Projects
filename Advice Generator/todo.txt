@@ -1,0 +1,10 @@
+## Quotes Generator App
+# CLI App
+
+Todo:
+
+• Welcome user and asks to either: Get a random advice or Search for advice
+• Respond based on users choice
+• If user picks random advice, fetch from the api and return the advice
+• if user picked search, prompt user to enter search term/query.
+• Search for advices based on the query and return all advices.
