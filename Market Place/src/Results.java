@@ -21,7 +21,6 @@ public class Results {
                 .send(request, HttpResponse.BodyHandlers.ofString());
         Gson gson = new Gson();
         ProductList products = gson.fromJson(response.body(), ProductList.class);
-        System.out.println(Arrays.toString(products.getProducts().toArray()));
         return products.getProducts();
     }
 }

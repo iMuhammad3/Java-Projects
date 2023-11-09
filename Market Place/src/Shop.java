@@ -31,9 +31,36 @@ public class Shop {
     }
 
     private void displayAllProducts() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
         List<Product> products = Results.fetchAllProducts();
-        for(Product product : products){
-            System.out.println(product.getTitle());
+        for(int i = 0;i < products.size();i++){
+            System.out.println((i + 1) + ". " + products.get(i).getTitle());
+        }
+        System.out.println("Would you like to buy anyone?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        choice = scanner.nextInt();
+        if(choice == 1){
+
+        } else if(choice == 2){
+            return;
+        } else {
+            System.out.println("Quitting anyway");
+        }
+    }
+
+    void buyFrom30Products(List<Product> products){
+        Scanner scanner = new Scanner(System.in);
+        int productNo;
+        System.out.println("What product would you like to buy (the options from 1 - 30)");
+        productNo = scanner.nextInt();
+        if(productNo < 1 || productNo > 30) return;
+        // start looping from 1 to be match with user choice
+        for(int i = 1;i <= products.size();i++){
+            if(productNo == i){
+
+            }
         }
     }
 }
