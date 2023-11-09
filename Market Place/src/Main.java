@@ -1,6 +1,10 @@
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Shop shop = new Shop();
-        shop.startShopping();
+        try{
+            shop.startShopping();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
