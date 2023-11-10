@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Customer {
     private double money;
-    List<Product> products;
+    private List<Product> products;
 
     public Customer(){
         this.money = 5000;
