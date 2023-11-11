@@ -23,6 +23,7 @@ public class Shop {
 
             switch (choice){
                 case 1 -> buyProducts();
+                case 2 -> sellProducts();
                 case 3 -> System.out.println("Your balance is " + customer.getMoney());
                 case 4 -> viewProducts();
                 default -> {
@@ -49,6 +50,36 @@ public class Shop {
             case 3 -> searchProductByCategory();
             default -> System.out.println("Enter a valid option");
         }
+    }
+
+    public void sellProducts() {
+        List<Product> products = customer.getProducts();
+        Product productToSell = null;
+        if(products.isEmpty()){
+            System.out.println("You don't have any products to sell");
+            return;
+        }
+        System.out.println("Which of your products would you like to sell?");
+        for(int i = 0;i < products.size();i++){
+            System.out.println((i+1) + ". " + products.get(i).getTitle());
+        }
+        int choice = new Scanner(System.in).nextInt();
+        for(int i = 0;i < products.size();i++){
+            if(choice == (i+1)){
+                productToSell = products.get(i);
+                break;
+            }
+        }
+        products.remove(productToSell);
+        customer.setProducts(products);
+        customer.setMoney(
+                customer.getMoney() + productToSell.getPrice()
+        );
+        System.out.println(
+                productToSell.getTitle() +
+                " has been sold and you've gained $" +
+                productToSell.getPrice()
+        );
     }
 
     public void viewProducts(){

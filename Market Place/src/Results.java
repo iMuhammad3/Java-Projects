@@ -23,32 +23,6 @@ public class Results {
         return products.getProducts();
     }
 
-    public static List<Product> fetchAllProducts() throws Exception {
-        System.out.println("Loading products...");
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(URL))
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient()
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        ProductList products = gson.fromJson(response.body(), ProductList.class);
-        return products.getProducts();
-    }
-
-    public static List<Product> fetchProductsByName(String productInput) throws Exception {
-        if(!productInput.endsWith("s")){
-            System.out.println("Searching for " + productInput + "'s...");
-        } else {
-            System.out.println("Searching for " + productInput + "...");
-        }
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(URL + "/search?q=" + productInput))
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient()
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        ProductList products = gson.fromJson(response.body(), ProductList.class);
-        return products.getProducts();
-    }
-
     public static List<String> fetchCategories() throws Exception{
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(URL + "/categories"))
