@@ -1,50 +1,50 @@
-<mxfile host="app.diagrams.net" modified="2023-11-09T18:20:11.951Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="yDm4Bk2Sv2s3w9tL_6ft" version="22.1.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-09T19:23:19.663Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="daYO90VXsUOmTNGJc_O5" version="22.1.0" type="github">
   <diagram name="Page-1" id="MFYOCJzHI550EAvb38xx">
-    <mxGraphModel dx="1489" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1583" dy="516" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-4" value="User&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="600" y="50" width="30" height="60" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-4" value="User&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="150" y="50" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-12" value="Search products by name/title" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="300" y="320" width="120" height="60" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-12" value="Search products by name/title" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-150" y="320" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-14" target="dmeRDrYjIRXJICjOPGR_-22">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-14" target="dmeRDrYjIRXJICjOPGR_-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-14" value="Display 30 products.&lt;br&gt;Ask user if they would like to buy any.&lt;br&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="-60" y="390" width="150" height="70" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-14" value="Display 30 products.&lt;br&gt;Ask user if they would like to buy any.&lt;br&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-510" y="390" width="150" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-16" target="dmeRDrYjIRXJICjOPGR_-18">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-16" target="dmeRDrYjIRXJICjOPGR_-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-16" value="Market App" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="412" y="50" width="80" height="80" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-16" value="Market App" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="-38" y="50" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-18" target="dmeRDrYjIRXJICjOPGR_-12">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-18" target="dmeRDrYjIRXJICjOPGR_-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-18" target="dmeRDrYjIRXJICjOPGR_-27">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-18" target="dmeRDrYjIRXJICjOPGR_-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-18" value="Buy products?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="310" y="160" width="100" height="90" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-18" value="Buy products?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-140" y="160" width="100" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-22" target="dmeRDrYjIRXJICjOPGR_-24">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-22" target="dmeRDrYjIRXJICjOPGR_-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-22" value="Which product&lt;br&gt;&amp;nbsp;to buy?" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="-42.5" y="510" width="115" height="105" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-22" value="Which product&lt;br&gt;&amp;nbsp;to buy?" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-492.5" y="510" width="115" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-24" value="Get product choice and sell product to customer" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="-45" y="690" width="120" height="60" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-24" value="Get product choice and sell product to customer" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-495" y="690" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dmeRDrYjIRXJICjOPGR_-27" target="dmeRDrYjIRXJICjOPGR_-14">
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="dmeRDrYjIRXJICjOPGR_-27" target="dmeRDrYjIRXJICjOPGR_-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dmeRDrYjIRXJICjOPGR_-27" value="View All 30 available&lt;br&gt;&amp;nbsp;products?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="140" y="260" width="110" height="110" as="geometry" />
+        <mxCell id="dmeRDrYjIRXJICjOPGR_-27" value="View All 30 available&lt;br&gt;&amp;nbsp;products?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-310" y="260" width="110" height="110" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
