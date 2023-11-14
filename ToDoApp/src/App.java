@@ -30,7 +30,11 @@ public class App {
     }
 
     public void createTodo(){
-
+        System.out.println("Enter Todo: ");
+        String description = new Scanner(System.in).nextLine();
+        System.out.println("Creating todo...");
+        Database.insertData(description);
+        System.out.println("You have successfully created the to do!");
     }
 
     public void viewTodos(){

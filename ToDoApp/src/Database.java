@@ -1,6 +1,8 @@
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class Database {
@@ -24,5 +26,19 @@ public class Database {
             System.out.println(e.getMessage());
         }
         return connection;
+    }
+
+    public static void insertData(String description){
+        String sql = "insert into to_do (description) values (?)";
+
+        try(
+            Connection connection = getConnection();
+            PreparedStatement prepStatement = connection.prepareStatement(sql)
+        ) {
+            prepStatement.setString(1, description);
+            prepStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
