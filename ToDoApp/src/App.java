@@ -38,7 +38,12 @@ public class App {
     }
 
     public void viewTodos(){
-
+        System.out.println("Do you want to");
+        System.out.println("1. View all your todos");
+        System.out.println("2. View completed todos");
+        System.out.println("3. View uncompleted todos");
+        System.out.println("4. View last modified todo");
+        System.out.println("5. View todos by date created");
     }
 
     public void modifyTodos(){

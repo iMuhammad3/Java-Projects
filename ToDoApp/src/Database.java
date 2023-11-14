@@ -1,8 +1,5 @@
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class Database {
@@ -40,5 +37,20 @@ public class Database {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static ResultSet fetchTodos(){
+        String sql = "select * from to_do";
+        ResultSet resultSet = null;
+
+        try(
+                Connection connection = getConnection();
+                Statement statement = connection.createStatement()
+        ) {
+            resultSet = statement.executeQuery(sql);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return resultSet;
     }
 }
