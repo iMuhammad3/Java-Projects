@@ -43,11 +43,26 @@ public class Database {
 
     public static List<ToDo> fetchTodos(){
         String sql = "select * from to_do";
+        return processTodos(sql);
+    }
+
+    public static List<ToDo> fetchTodos(String sortMethod){
+        String sql = "select * from to_do order by " + sortMethod;
+        return processTodos(sql);
+    }
+
+    public static List<ToDo> fetchTodos(String column, String value){
+        String sql = "select * from to_do where " + column + " = " + value;
+        return processTodos(sql);
+    }
+
+    // process todos from database and return List
+    private static List<ToDo> processTodos(String sql){
         try(
                 Connection connection = getConnection();
                 Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery(sql);
-                ){
+        ){
             List<ToDo> todos = new ArrayList<>();
 
             while (result.next()){

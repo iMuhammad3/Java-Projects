@@ -1,5 +1,4 @@
-import javax.xml.crypto.Data;
-import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +28,7 @@ public class App {
         } while(choice != 99); // break loop if user chooses 99
     }
 
-    public void createTodo(){
+    private void createTodo(){
         System.out.println("Enter Todo: ");
         // read description from user and assign to variable
         String description = new Scanner(System.in).nextLine();
@@ -39,7 +38,7 @@ public class App {
         System.out.println("You have successfully created the to do!");
     }
 
-    public void viewTodos(){
+    private void viewTodos(){
         System.out.println("Do you want to");
         System.out.println("1. View all your todos");
         System.out.println("2. View completed todos");
@@ -47,28 +46,48 @@ public class App {
         System.out.println("4. View last modified todo");
 
         int choice = new Scanner(System.in).nextInt();
+        loader();
         switch (choice){
-            case 1 -> displayAllTodos();
+            case 1 -> viewAllTodos();
+            case 2 -> displayTodos(Database.fetchTodos("completed","true"));
+            case 3 -> displayTodos(Database.fetchTodos("completed","false"));
+            case 4 -> displayTodos(Database.fetchTodos("last_modified desc limit 1"));
+            default -> System.out.println("Choose a valid option");
         }
     }
 
-    public void askToSort(){
+    private void viewAllTodos(){
         System.out.println("Would you like to sort the todos?");
         System.out.println("1. Yes\n2. No");
         int choice = new Scanner(System.in).nextInt();
         if(choice == 1){
-
-        } else if(choice == 2) {
-
+            loader();
+            displayTodos(sortTodos());
+        } else if(choice == 2) { // display unsorted todos
+            loader();
+            displayTodos(Database.fetchTodos());
         } else {
             System.out.println("Please choose a valid option");
         }
     }
 
-    public void displayAllTodos(){
-        System.out.println("Fetching todos...");
-        // receive List of fetched todos from method
-        List<ToDo> todos = Database.fetchTodos();
+    private List<ToDo> sortTodos(){
+        List<ToDo> todos = new ArrayList<>();
+        System.out.println("How would you like to sort by?");
+        System.out.println("1. By Id");
+        System.out.println("2. By Date Created");
+        System.out.println("3. By Last Modified");
+        int choice = new Scanner(System.in).nextInt();
+        switch(choice){
+            case 1 -> todos = Database.fetchTodos("id");
+            case 2 -> todos = Database.fetchTodos("date_created");
+            case 3 -> todos = Database.fetchTodos("last_modified");
+            default -> System.out.println("You didn't choose a valid option");
+        }
+        return todos;
+    }
+
+    private void displayTodos(List<ToDo> todos){
         // check if there are any todos
         if(todos == null || todos.isEmpty()){
             System.out.println("You have no todos");
@@ -88,7 +107,11 @@ public class App {
         System.out.println();
     }
 
-    public void modifyTodos(){
+    private void modifyTodos(){
 
+    }
+
+    private void loader(){
+        System.out.println("Fetching todos...");
     }
 }
