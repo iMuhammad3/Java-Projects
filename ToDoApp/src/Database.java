@@ -1,11 +1,13 @@
 import java.io.FileInputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class Database {
     public Database(){}
 
-    public static Connection getConnection() throws Exception {
+    public static Connection getConnection() {
         Connection connection = null;
 
         try(FileInputStream input = new FileInputStream("src/db.properties")){
@@ -39,18 +41,28 @@ public class Database {
         }
     }
 
-    public static ResultSet fetchTodos(){
+    public static List<ToDo> fetchTodos(){
         String sql = "select * from to_do";
-        ResultSet resultSet = null;
-
         try(
                 Connection connection = getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            resultSet = statement.executeQuery(sql);
-        } catch (Exception e) {
+                Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery(sql);
+                ){
+            List<ToDo> todos = new ArrayList<>();
+
+            while (result.next()){
+                ToDo todo = new ToDo();
+                todo.setId(result.getInt("id"));
+                todo.setDescription(result.getString("description"));
+                todo.setCompleted(result.getBoolean("completed"));
+                todo.setDateCreated(result.getDate("date_created"));
+                todo.setLastModified(result.getDate("last_modified"));
+                todos.add(todo);
+            }
+            return todos;
+        } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return resultSet;
+        return null;
     }
 }

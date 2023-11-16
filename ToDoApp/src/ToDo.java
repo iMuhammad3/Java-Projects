@@ -10,6 +10,7 @@ public class ToDo {
     public ToDo(String description){
         this.description = description;
     }
+    public ToDo(){}
 
     public Date getLastModified() {
         return lastModified;
@@ -27,7 +28,7 @@ public class ToDo {
         this.dateCreated = dateCreated;
     }
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
