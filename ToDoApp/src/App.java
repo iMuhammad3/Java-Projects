@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class App {
     public App(){}
 
+    String basicSQL = "select * from to_do ";
+
     public void run(){
         // initialize choice variable
         int choice;
@@ -32,10 +34,14 @@ public class App {
         System.out.println("Enter Todo: ");
         // read description from user and assign to variable
         String description = new Scanner(System.in).nextLine();
-        System.out.println("Creating todo...");
+        loader("Creating todo...");
         // insert a new row (To Do) into the database
-        Database.insertData(description);
-        System.out.println("You have successfully created the to do!");
+        int rowAffected = Database.insertTodo(description);
+        if(rowAffected == 1){
+            System.out.println("Todo created successfully!");
+        } else if(rowAffected == 0) {
+            System.out.println("Unable to create todo. Please try again");
+        }
     }
 
     private void viewTodos(){
@@ -44,14 +50,15 @@ public class App {
         System.out.println("2. View completed todos");
         System.out.println("3. View uncompleted todos");
         System.out.println("4. View last modified todo");
+        System.out.println("5. Search for todo");
 
         int choice = new Scanner(System.in).nextInt();
         loader();
         switch (choice){
             case 1 -> viewAllTodos();
-            case 2 -> displayTodos(Database.fetchTodos("completed","true"));
-            case 3 -> displayTodos(Database.fetchTodos("completed","false"));
-            case 4 -> displayTodos(Database.fetchTodos("last_modified desc limit 1"));
+            case 2 -> displayTodos(Database.fetchTodos(basicSQL + " where completed = true"));
+            case 3 -> displayTodos(Database.fetchTodos(basicSQL + " where uncompleted = true"));
+            case 4 -> displayTodos(Database.fetchTodos(basicSQL+ " order by last_modified desc limit 1"));
             default -> System.out.println("Choose a valid option");
         }
     }
@@ -61,11 +68,10 @@ public class App {
         System.out.println("1. Yes\n2. No");
         int choice = new Scanner(System.in).nextInt();
         if(choice == 1){
-            loader();
             displayTodos(sortTodos());
         } else if(choice == 2) { // display unsorted todos
             loader();
-            displayTodos(Database.fetchTodos());
+            displayTodos(Database.fetchTodos(basicSQL));
         } else {
             System.out.println("Please choose a valid option");
         }
@@ -73,15 +79,16 @@ public class App {
 
     private List<ToDo> sortTodos(){
         List<ToDo> todos = new ArrayList<>();
-        System.out.println("How would you like to sort by?");
+        System.out.println("What sort method do you prefer?");
         System.out.println("1. By Id");
         System.out.println("2. By Date Created");
         System.out.println("3. By Last Modified");
         int choice = new Scanner(System.in).nextInt();
+        loader();
         switch(choice){
-            case 1 -> todos = Database.fetchTodos("id");
-            case 2 -> todos = Database.fetchTodos("date_created");
-            case 3 -> todos = Database.fetchTodos("last_modified");
+            case 1 -> todos = Database.fetchTodos(basicSQL + " order by id");
+            case 2 -> todos = Database.fetchTodos(basicSQL + " order by date_created");
+            case 3 -> todos = Database.fetchTodos(basicSQL + " order by last_modified");
             default -> System.out.println("You didn't choose a valid option");
         }
         return todos;
@@ -108,10 +115,56 @@ public class App {
     }
 
     private void modifyTodos(){
+        loader();
+        List<ToDo> todos = Database.fetchTodos(basicSQL);
+        ToDo selectedTodo = null;
+        System.out.println("Which of your todos would you like to modify? (provide the todo's id)");
+        displayTodos(todos);
+        int id = new Scanner(System.in).nextInt();
+        for(ToDo todo : todos){
+            if(todo.getId() == id){
+                selectedTodo = todo;
+            }
+        }
+        if(selectedTodo == null){
+            System.out.println("To Do not found, please check again");
+            return;
+        } else {
+            System.out.println("How would you like to modify this todo?");
+            System.out.println("1. Change completed state");
+            System.out.println("2. Change todo description");
+            System.out.println("3. Delete todo");
+            int choice = new Scanner(System.in).nextInt();
+            switch (choice){
+                case 1 -> changeComplete();
+                case 2 -> changeTodoDescription();
+                case 3 -> deleteTodo(id);
+            }
+        }
+    }
 
+    private void changeComplete(){
+
+    }
+
+    private void changeTodoDescription(){
+
+    }
+
+    private void deleteTodo(int id){
+        loader("Deleting todo...");
+        int rowAffected = Database.deleteTodo(id);
+        if(rowAffected == 1){
+            System.out.println("Todo has successfully been deleted");
+        } else {
+            System.out.println("Something went wrong, please check and try again");
+        }
     }
 
     private void loader(){
         System.out.println("Fetching todos...");
+    }
+    private void loader(String message){
+        System.out.println(message);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Database {
     public Database(){}
 
-    public static Connection getConnection() {
+    private static Connection getConnection() {
         Connection connection = null;
 
         try(FileInputStream input = new FileInputStream("src/db.properties")){
@@ -27,37 +27,22 @@ public class Database {
         return connection;
     }
 
-    public static void insertData(String description){
+    public static int insertTodo(String description){
         String sql = "insert into to_do (description) values (?)";
-
+        int rowAffected = 0;
         try(
             Connection connection = getConnection();
             PreparedStatement prepStatement = connection.prepareStatement(sql)
         ) {
             prepStatement.setString(1, description);
-            prepStatement.executeUpdate();
+            rowAffected = prepStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return rowAffected;
     }
 
-    public static List<ToDo> fetchTodos(){
-        String sql = "select * from to_do";
-        return processTodos(sql);
-    }
-
-    public static List<ToDo> fetchTodos(String sortMethod){
-        String sql = "select * from to_do order by " + sortMethod;
-        return processTodos(sql);
-    }
-
-    public static List<ToDo> fetchTodos(String column, String value){
-        String sql = "select * from to_do where " + column + " = " + value;
-        return processTodos(sql);
-    }
-
-    // process todos from database and return List
-    private static List<ToDo> processTodos(String sql){
+    public static List<ToDo> fetchTodos(String sql){
         try(
                 Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -79,5 +64,20 @@ public class Database {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public static int deleteTodo(int id){
+        String sql = "delete from to_do where id = ?";
+        int rowAffected = 0;
+        try (
+                Connection connection = getConnection();
+                PreparedStatement prepStatement = connection.prepareStatement(sql)
+                ){
+            prepStatement.setInt(1, id);
+            rowAffected = prepStatement.executeUpdate();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return rowAffected;
     }
 }
