@@ -80,4 +80,61 @@ public class Database {
         }
         return rowAffected;
     }
+
+    public static boolean updateCompleted(int id){
+        String sql = "update to_do set completed = ?, last_modified = curdate() where id = ?";
+        boolean oldCompleted = false;
+        boolean newCompleted = true;
+        try(
+                Connection connection = getConnection();
+                PreparedStatement prepStatement = connection.prepareStatement(sql)
+                ){
+            ResultSet result = connection.createStatement().executeQuery("select id, completed from to_do");
+            while(result.next()){
+                if(result.getInt("id") == id){
+                    oldCompleted = result.getBoolean("completed");
+                }
+            }
+            newCompleted = !oldCompleted;
+            prepStatement.setBoolean(1, newCompleted);
+            prepStatement.setInt(2, id);
+
+            if(prepStatement.executeUpdate() > 0){
+                updateLastModified(id);
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return newCompleted;
+    }
+
+    public static void changeDescription(int id, String description){
+        String sql = "update to_do set description = ? where id = ?";
+        try(
+                Connection connection = getConnection();
+                PreparedStatement prepStatement = connection.prepareStatement(sql)
+        ){
+            prepStatement.setString(1, description);
+            prepStatement.setInt(2, id);
+
+            if(prepStatement.executeUpdate() > 0){
+                updateLastModified(id);
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void updateLastModified(int id){
+        String sql = "update to_do set last_modified = curdate() where id = ?";
+        try(
+            Connection connection = getConnection();
+            PreparedStatement prepStatement = connection.prepareStatement(sql)
+        ){
+            prepStatement.setInt(1, id);
+            prepStatement.executeUpdate();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

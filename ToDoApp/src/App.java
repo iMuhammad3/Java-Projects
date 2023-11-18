@@ -50,7 +50,6 @@ public class App {
         System.out.println("2. View completed todos");
         System.out.println("3. View uncompleted todos");
         System.out.println("4. View last modified todo");
-        System.out.println("5. Search for todo");
 
         int choice = new Scanner(System.in).nextInt();
         loader();
@@ -121,14 +120,17 @@ public class App {
         System.out.println("Which of your todos would you like to modify? (provide the todo's id)");
         displayTodos(todos);
         int id = new Scanner(System.in).nextInt();
-        for(ToDo todo : todos){
-            if(todo.getId() == id){
-                selectedTodo = todo;
+        if(todos != null){
+            for(ToDo todo : todos){
+                if(todo.getId() == id){
+                    selectedTodo = todo;
+                }
             }
+        } else {
+            System.out.println("No todos found");
         }
         if(selectedTodo == null){
             System.out.println("To Do not found, please check again");
-            return;
         } else {
             System.out.println("How would you like to modify this todo?");
             System.out.println("1. Change completed state");
@@ -136,19 +138,25 @@ public class App {
             System.out.println("3. Delete todo");
             int choice = new Scanner(System.in).nextInt();
             switch (choice){
-                case 1 -> changeComplete();
-                case 2 -> changeTodoDescription();
+                case 1 -> changeComplete(id);
+                case 2 -> changeTodoDescription(id);
                 case 3 -> deleteTodo(id);
             }
         }
     }
 
-    private void changeComplete(){
-
+    private void changeComplete(int id){
+        loader("Updating...");
+        boolean completed = Database.updateCompleted(id);
+        System.out.println("Todo's completed has been set to " + completed);
     }
 
-    private void changeTodoDescription(){
-
+    private void changeTodoDescription(int id){
+        System.out.println("Enter new description: ");
+        String description = new Scanner(System.in).nextLine();
+        loader("Updating...");
+        Database.changeDescription(id, description);
+        System.out.println("To do description has been modified successfully!");
     }
 
     private void deleteTodo(int id){
