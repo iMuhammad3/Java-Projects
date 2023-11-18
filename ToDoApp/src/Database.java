@@ -46,7 +46,7 @@ public class Database {
         try(
                 Connection connection = getConnection();
                 Statement statement = connection.createStatement();
-                ResultSet result = statement.executeQuery(sql);
+                ResultSet result = statement.executeQuery(sql)
         ){
             List<ToDo> todos = new ArrayList<>();
 
