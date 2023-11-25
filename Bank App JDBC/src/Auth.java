@@ -17,7 +17,7 @@ public class Auth {
             confirmedPassword = validateInput("Create a password: ");
         }
 
-        System.out.println("Creating a account...");
+        System.out.println("Creating account...");
         Database.insertUser(username, password, fullName);
 
     }
@@ -36,7 +36,21 @@ public class Auth {
         return field;
     }
 
-    public void signIn(){
-        System.out.println("sign in");
+    public User signIn(){
+        Scanner scanner = new Scanner(System.in);
+        User user = null;
+        int choice = 0;
+
+        System.out.println("Enter your username: ");
+        String usernameInput = scanner.nextLine();
+
+        System.out.println("Enter your password: ");
+        String passwordInput = scanner.nextLine();
+
+        System.out.println("Searching for account...");
+
+        user = Database.checkUser(usernameInput, passwordInput);
+
+        return user;
     }
 }

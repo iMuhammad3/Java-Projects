@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-    public  void run(){
+    public void run(){
         int choice;
         Auth auth = new Auth();
         do{
@@ -12,7 +12,14 @@ public class App {
             choice = new Scanner(System.in).nextInt();
 
             switch(choice){
-                case 1 -> auth.signIn();
+                case 1 -> {
+                    User user = auth.signIn();
+                    if(user == null){
+                        System.out.println("Account was not found\nPlease check your details and try again");
+                    } else {
+                        welcomeUser(user);
+                    }
+                }
                 case 2 -> auth.createAccount();
                 case 99 -> System.out.println("Bye!");
                 default -> System.out.println("Please select a valid option :)");
@@ -20,9 +27,9 @@ public class App {
         }while(choice != 99);
     }
 
-
-    private  void loader(String message){
-        System.out.println(message);
+    private void welcomeUser(User user){
+        System.out.println("Welcome " + user.getFullName() + "!");
+        System.out.println("What would you like to do?");
     }
 
 }
