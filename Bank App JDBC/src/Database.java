@@ -78,6 +78,23 @@ public class Database {
         return user;
     }
 
+    public static int updateBalance(int id, double amount){
+        String sql = "update users set balance = ? where id = ?";
+        Connection connection = getConnection();
+        int rowAffected = 0;
+        try(PreparedStatement prepStatement = connection.prepareStatement(sql)){
+
+            prepStatement.setDouble(1, amount);
+            prepStatement.setInt(2, id);
+
+            rowAffected = prepStatement.executeUpdate();
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return rowAffected;
+    }
+
     private static String hashPassword(String password){
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }

@@ -38,8 +38,7 @@ public class Auth {
 
     public User signIn(){
         Scanner scanner = new Scanner(System.in);
-        User user = null;
-        int choice = 0;
+        User user;
 
         System.out.println("Enter your username: ");
         String usernameInput = scanner.nextLine();
