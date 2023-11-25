@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-    public static void run(){
+    public  void run(){
         int choice;
         do{
             System.out.println("Do you have an account?");
@@ -12,37 +12,21 @@ public class App {
 
             switch(choice){
                 case 1 -> signIn();
-                case 2 -> createAccount();
+                case 2 -> new Signup().createAccount();
                 case 99 -> System.out.println("Bye!");
                 default -> System.out.println("Please select a valid option :)");
             }
         }while(choice != 99);
     }
 
-    private static void createAccount(){
-        System.out.println("Glad you decided to create an account!");
-        String fullName = validateInput("Please enter your full name: ");
-        String username = validateInput("Create a username: ");
-        String password = validateInput("Create a password");
-        String confirmedPassword = validateInput("Please confirm the password: ");
-    }
 
-    // checks the users input to see if it's an empty string
-    private static String validateInput(String query){
-        Scanner scanner = new Scanner(System.in);
-        String field;
-        do{
-            System.out.println(query);
-            field = scanner.nextLine();
-            if(field.isEmpty()){
-                System.out.println("You did not enter a value");
-            }
-        }while(field.isEmpty());
-        return field;
-    }
 
-    private static void signIn(){
+    private  void signIn(){
         System.out.println("sign in");
+    }
+
+    private  void loader(String message){
+        System.out.println(message);
     }
 
 }
