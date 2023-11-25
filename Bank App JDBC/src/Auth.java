@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Signup {
+public class Auth {
 
-    public Signup(){}
+    public Auth(){}
 
     public void createAccount(){
         System.out.println("Glad you decided to create an account!");
@@ -23,7 +23,7 @@ public class Signup {
     }
 
     // checks the users input to see if it's an empty string
-    public String validateInput(String query){
+    private String validateInput(String query){
         Scanner scanner = new Scanner(System.in);
         String field;
         do{
@@ -34,5 +34,9 @@ public class Signup {
             }
         }while(field.isEmpty());
         return field;
+    }
+
+    public void signIn(){
+        System.out.println("sign in");
     }
 }
