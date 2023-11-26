@@ -51,7 +51,7 @@ public class Database {
         }
     }
 
-    public static User checkUser(String usernameInput, String passwordInput){
+    public static User validateUser(String usernameInput, String passwordInput){
         User user = null;
         String sql = "select * from users;";
         Connection connection = getConnection();
@@ -64,6 +64,28 @@ public class Database {
                             // check user inputted password against hashed password in db
                     BCrypt.checkpw(passwordInput, rs.getString("hashed_password"))
                 ){
+                    int id = rs.getInt("id");
+                    String username = rs.getString("username");
+                    String fullName = rs.getString("fullname");
+                    double balance = rs.getDouble("balance");
+                    user = new User(id, username, fullName, balance);
+                }
+            }
+
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+    public static User searchUser(String usernameInput){
+        User user = null;
+        String sql = "select * from users;";
+        Connection connection = getConnection();
+        try(ResultSet rs = connection.createStatement().executeQuery(sql)){
+
+            while(rs.next()){
+                if(rs.getString("username").equals(usernameInput)){
                     int id = rs.getInt("id");
                     String username = rs.getString("username");
                     String fullName = rs.getString("fullname");

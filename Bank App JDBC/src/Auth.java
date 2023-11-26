@@ -48,7 +48,7 @@ public class Auth {
 
         System.out.println("Searching for account...");
 
-        user = Database.checkUser(usernameInput, passwordInput);
+        user = Database.validateUser(usernameInput, passwordInput);
 
         return user;
     }
