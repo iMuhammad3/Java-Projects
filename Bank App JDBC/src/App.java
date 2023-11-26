@@ -69,7 +69,7 @@ public class App {
             if(rowAffected > 0){
                 currentUser.setBalance(debitAmount);
                 System.out.println("\nYour account has been debited by " + amount);
-                System.out.println("You have " + currentUser.getBalance() + " remaining.");
+                System.out.println("You have $" + currentUser.getBalance() + " remaining.");
             } else {
                 System.out.println("\nSomething went wrong");
             }
@@ -86,8 +86,8 @@ public class App {
         int rowAffected = Database.updateBalance(currentUser.getId(), totalAmount);
         if(rowAffected > 0){
             currentUser.setBalance(totalAmount);
-            System.out.println("\nYou have been credited with " + amount);
-            System.out.println("You now have " + currentUser.getBalance() + " in your account");
+            System.out.println("\nYou have been credited with $" + amount);
+            System.out.println("You now have $" + currentUser.getBalance() + " in your account");
         } else {
             System.out.println("\nSomething went wrong");
         }
@@ -111,7 +111,7 @@ public class App {
             System.out.println("You don't have enough money!");
             return;
         }
-        System.out.println("Sending " + amount + " to " + user.getFullName() + "...");
+        System.out.println("Sending $" + amount + " to " + user.getFullName() + "...");
 
         double creditAmount = user.getBalance() + amount;
         double debitAmount = currentUser.getBalance() - amount;
@@ -139,9 +139,9 @@ public class App {
             System.out.println("\nTransaction details: ");
             System.out.println("\tSender's Name: " + currentUser.getFullName());
             System.out.println("\tReceiver's Name: " + user.getFullName());
-            System.out.println("\tDebit: " + amount);
+            System.out.println("\tDebit: -$" + amount);
             System.out.println("\tDate: " + LocalDate.now());
-            System.out.println("\tBalance: " + currentUser.getBalance());
+            System.out.println("\tBalance: $" + currentUser.getBalance());
         }
     }
 
