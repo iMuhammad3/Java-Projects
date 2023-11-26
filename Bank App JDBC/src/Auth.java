@@ -14,7 +14,7 @@ public class Auth {
         while(!password.equals(confirmedPassword)){
             System.out.println("Passwords don't match\nPlease try again");
             password = validateInput("Create a password: ");
-            confirmedPassword = validateInput("Create a password: ");
+            confirmedPassword = validateInput("Confirm password: ");
         }
 
         System.out.println("Creating account...");
