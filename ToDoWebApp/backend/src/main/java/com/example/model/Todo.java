@@ -2,6 +2,10 @@ package com.example.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,11 +21,24 @@ public class Todo {
 	private int id;
 	private String todo;
 	private boolean completed;
-	@Temporal(TemporalType.TIMESTAMP)
-    private Date date_created;
-	@Temporal(TemporalType.TIMESTAMP)
-    private Date last_modified;
+	@CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_created", nullable = false, updatable = false)
+    private Date dateCreated;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_modified")
+    private Date lastModified;
 	
+	public Todo () {
+		
+	}
+	
+	public Todo(String todo, boolean completed) {
+		this.todo = todo;
+		this.completed = completed;
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,16 +58,16 @@ public class Todo {
 		this.completed = completed;
 	}
 	public Date getDate_created() {
-		return date_created;
+		return dateCreated;
 	}
 	public void setDate_created(Date date_created) {
-		this.date_created = date_created;
+		this.dateCreated = date_created;
 	}
 	public Date getLast_modified() {
-		return last_modified;
+		return lastModified;
 	}
 	public void setLast_modified(Date last_modified) {
-		this.last_modified = last_modified;
+		this.lastModified = last_modified;
 	}
 	
 	

@@ -3,11 +3,13 @@ package com.example.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Todo;
@@ -21,8 +23,11 @@ public class TodoController {
 	
 	// To Do
 	@PostMapping("create")
-	public String createTodo() {
-		return "created";
+	public ResponseEntity<String> createTodo(
+			@RequestParam("todo") String todo,
+		    @RequestParam("completed") boolean completed
+		    ) {
+		return service.addTodo(todo, completed);
 	}
 	
 	// Done
