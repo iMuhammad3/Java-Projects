@@ -33,7 +33,7 @@ public class TodoController {
 	// Done
 	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@GetMapping("todos")
-	public List<Todo> getAllTodos() {
+	public ResponseEntity<List<Todo>> getAllTodos() {
 		return service.getAllTodos();
 	}
 	
@@ -45,8 +45,8 @@ public class TodoController {
 	
 	// To Do
 	@DeleteMapping("delete")
-	public String deleteTodo() {
-		return "deleted";
+	public ResponseEntity<String> deleteTodo(@RequestParam int id) {
+		return service.deleteTodo(id);
 	}
 	
 	
