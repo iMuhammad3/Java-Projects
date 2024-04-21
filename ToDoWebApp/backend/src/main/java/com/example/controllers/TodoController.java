@@ -46,6 +46,7 @@ public class TodoController {
 	}
 	
 	// To Do
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@DeleteMapping("delete")
 	public ResponseEntity<String> deleteTodo(@RequestParam int id) {
 		return service.deleteTodo(id);
