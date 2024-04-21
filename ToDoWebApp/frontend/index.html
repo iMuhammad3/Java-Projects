@@ -19,6 +19,24 @@
                 <th>Completed</th>
             </tr>
         </table>
+        <button id="addTodoBtn">Add Todo</button>
     </main>
+
+    <div id="form-container">
+        <form class="hide" action="http://localhost:8080/app/create" method="post" id="createForm">
+            <input placeholder="Enter todo" type="text" name="todo" autocomplete="off">
+            <section>
+                <p>Completed: </p>
+                <label for="true">
+                    <span>True</span><input id="true" type="radio" name="completed" value="true">
+                </label>
+                <label for="false">
+                    <span>False</span><input id="false" type="radio" name="completed" value="false">
+                </label>
+            </section>
+            <button id="submitBtn" type="submit">Create</button>
+        </form>
+    </div>
+
 </body>
 </html>

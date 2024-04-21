@@ -4,15 +4,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: solid white; */
 }
 
 body {
+    --white: #f1f1fa;
     background-color: rgb(8, 8, 96);
-    color: #f1f1fa;
-    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
     gap: 50px;
 }
@@ -21,9 +24,16 @@ h1 {
     margin-top: 30px;
 }
 
+main {
+    width: max(60%, 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
 h2 {
     font-weight: 400;
-    text-decoration: underline;
 }
 
 li {
@@ -33,14 +43,90 @@ li {
 table {
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  td, th {
+}
+
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-  
-  tr:nth-child(even) {
+}
+
+tr:nth-child(even) {
     background-color: rgb(2, 2, 59);
-  }
+}
+
+td.buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    &>button{
+        border: none;
+    }
+}
+
+td.buttons > :first-child {
+    background-color: rgb(67, 233, 49);
+    color: #000;
+}
+
+td.buttons > :last-child {
+    background-color: rgb(233, 49, 49);
+}
+
+button {
+    padding: 4px 7px;
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd3;
+}
+button:active {
+    scale: .97;
+}
+
+#form-container {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background-color: #0129;
+    justify-content: center;
+    align-items: center;
+}
+
+#createForm {
+    background-color: rgb(4, 4, 65);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px #0005;
+    border-radius: 4px;
+}
+
+#createForm.hide {
+    transform: translateY(-600px);
+}
+
+label {
+    cursor: pointer;
+    &> *{
+        margin: 0 3px;
+    }
+}
+
+#createForm > input {
+    background-color: rgb(15, 15, 108);
+    color: var(--white);
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 18px;
+    outline: none;
+}
