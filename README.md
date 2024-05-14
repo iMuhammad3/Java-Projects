@@ -1,2 +1,2 @@
 # Java-Projects
-Fun Java projects for learning java
+Java projects for learning java
